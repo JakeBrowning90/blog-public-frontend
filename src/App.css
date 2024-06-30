@@ -1,8 +1,12 @@
 #root {
   max-width: 1280px;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: grid;
+  grid-template-rows: 30px 1fr;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -45,8 +49,16 @@
 
 header, nav {
   display: flex;
-  gap: 10px;;
+  gap: 10px;
+}
+
+header {
   background-color: rgba(168, 168, 168, 0.492);
+  justify-content: space-between;
+}
+
+.page {
+  height: 100%;
 }
 
 .screenLogin {

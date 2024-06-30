@@ -1,6 +1,8 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import LoginScreen from "./components/LoginScreen";
+import SignupScreen from "./components/SignupScreen";
+import PostListScreen from "./components/PostListScreen";
+import PostDetailScreen from "./components/PostDetailScreen";
 import "./App.css";
 
 function App() {
@@ -56,10 +58,10 @@ function App() {
           </nav>
         )}
       </header>
-      {viewLogin && <div className="screenLogin">Login</div>}
-      {viewSignup && <div className="screenSignup">Sign-up</div>}
-      {viewPostList && <div className="screenPostList">Post List</div>}
-      {viewPostDetail && <div className="screenPostDetail">Post Detail</div>}
+      {viewLogin && <LoginScreen />}
+      {viewSignup && <SignupScreen />}
+      {viewPostList && <PostListScreen />}
+      {viewPostDetail && <PostDetailScreen />}
     </>
   );
 }
