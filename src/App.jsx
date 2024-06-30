@@ -1,35 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [viewLogin, setViewLogin] = useState(false);
+  const [viewSignup, setViewSignup] = useState(false);
+  const [viewPostList, setViewPostList] = useState(true);
+  const [viewPostDetail, setViewPostDetail] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
+
+  const navToLogin = () => {
+    setViewLogin(true);
+    setViewSignup(false);
+    setViewPostList(false);
+    setViewPostDetail(false);
+  };
+
+  const navToSignup = () => {
+    setViewLogin(false);
+    setViewSignup(true);
+    setViewPostList(false);
+    setViewPostDetail(false);
+  };
+
+  const navToPostList = () => {
+    setViewLogin(false);
+    setViewSignup(false);
+    setViewPostList(true);
+    setViewPostDetail(false);
+  };
+
+  const navToPostDetail = () => {
+    setViewLogin(false);
+    setViewSignup(false);
+    setViewPostList(false);
+    setViewPostDetail(true);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header>
+        <div onClick={navToPostList}>Home</div>
+        {currentUser ? (
+          <nav>
+            <div>{currentUser}</div>
+            <div>Logout</div>
+          </nav>
+        ) : (
+          <nav>
+            <div>Visitor</div>
+            <div onClick={navToLogin}>Log in</div>
+            <div onClick={navToSignup}>Sign up</div>
+          </nav>
+        )}
+      </header>
+      {viewLogin && <div className="screenLogin">Login</div>}
+      {viewSignup && <div className="screenSignup">Sign-up</div>}
+      {viewPostList && <div className="screenPostList">Post List</div>}
+      {viewPostDetail && <div className="screenPostDetail">Post Detail</div>}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
