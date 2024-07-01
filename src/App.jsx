@@ -12,6 +12,7 @@ function App() {
   const [viewPostList, setViewPostList] = useState(true);
   const [viewPostDetail, setViewPostDetail] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [currentPost, setCurrentPost] = useState("");
 
   const navToLogin = () => {
     setViewLogin(true);
@@ -60,8 +61,14 @@ function App() {
       </header>
       {viewLogin && <LoginScreen />}
       {viewSignup && <SignupScreen />}
-      {viewPostList && <PostListScreen />}
-      {viewPostDetail && <PostDetailScreen />}
+      {viewPostList && (
+        <PostListScreen
+          // currentPost={currentPost}
+          setCurrentPost={setCurrentPost}
+          navToPostDetail={navToPostDetail}
+        />
+      )}
+      {viewPostDetail && <PostDetailScreen currentPost={currentPost} />}
     </>
   );
 }

@@ -47,7 +47,12 @@
 
 /* My styles */
 
-header, nav {
+body {
+  height: 100vh;
+}
+
+header,
+nav {
   display: flex;
   gap: 10px;
 }
@@ -74,5 +79,14 @@ header {
 }
 
 .screenPostDetail {
+  background-color: rgba(116, 255, 106, 0.522);
+}
+
+.postList {
+  list-style: none;
+  padding: 0;
+}
+
+.postPreview {
   background-color: rgba(116, 255, 106, 0.522);
 }
