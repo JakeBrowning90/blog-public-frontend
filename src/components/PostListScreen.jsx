@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 function PostListScreen({ setCurrentPost, navToPostDetail }) {
   const [postList, setPostList] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   // const [currentPost, setCurrentPost] = useState("");
 
   const loadPostDetail = (post) => {
@@ -24,8 +25,12 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
         return response.json();
       })
       .then((response) => setPostList(response))
-      .catch((error) => setError(error));
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>A network error was encountered</p>;
 
   return (
     <div className="screenPostList page">
@@ -36,7 +41,11 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
         <ul className="postList">
           {postList.map((post) => {
             return (
-              <li key={post.id} className="postPreview" onClick={() => loadPostDetail(post)}>
+              <li
+                key={post.id}
+                className="postPreview"
+                onClick={() => loadPostDetail(post)}
+              >
                 <h2>{post.title} </h2>
 
                 <h3>{post.subtitle}</h3>
