@@ -29,7 +29,8 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
     if (Array.isArray(commentResponse)) {
       setCommentErrors(commentResponse);
     } else {
-      setCommentsList([...commentsList, commentResponse])
+      commentResponse.user.username = currentUser;
+      setCommentsList([...commentsList, commentResponse]);
       setCommentBody("");
     }
   }
@@ -87,10 +88,13 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
       <ul>
         {commentsList.map((comment) => {
           return (
-            <li key={comment.id} className="commentLI">
+            <li key={comment._id} className="commentLI">
               <p>{comment.user.username}</p>
               <p>{new Date(comment.timestamp).toUTCString()}</p>
               <p>{comment.body}</p>
+              {localStorage.getItem("id") == comment.user.id && (
+                <button>Delete</button>
+              )}
             </li>
           );
         })}
