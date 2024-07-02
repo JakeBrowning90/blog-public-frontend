@@ -1,28 +1,18 @@
 import React, { useState } from "react";
 import { apiurl } from "../apiSource";
 
-function SignupScreen({ navToLogin }) {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+function SignupScreen({
+  username,
+  email,
+  password,
+  confirmPassword,
+  handleUsername,
+  handleEmail,
+  handlePassword,
+  handleConfirmPassword,
+  navToLogin,
+}) {
   const [signupErrors, setSignupErrors] = useState([]);
-
-  function handleUsername(e) {
-    setUsername(e.target.value);
-  }
-
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleConfirmPassword(e) {
-    setConfirmPassword(e.target.value);
-  }
 
   // TODO: Add function to POST new user
   async function submitSignup(e) {
@@ -51,7 +41,7 @@ function SignupScreen({ navToLogin }) {
   return (
     <div className="screenSignup page">
       Sign Up
-      <form className="signupForm" onSubmit={submitSignup}>
+      <form className="userForm" onSubmit={submitSignup}>
         <ul className="errorList">
           {signupErrors.map((err) => {
             return <li key={signupErrors.indexOf(err)}>{err.msg}</li>;

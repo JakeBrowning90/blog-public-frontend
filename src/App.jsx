@@ -13,6 +13,26 @@ function App() {
   const [viewPostDetail, setViewPostDetail] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [currentPost, setCurrentPost] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  function handleUsername(e) {
+    setUsername(e.target.value);
+  }
+
+  function handleEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function handleConfirmPassword(e) {
+    setConfirmPassword(e.target.value);
+  }
 
   const navToLogin = () => {
     setViewLogin(true);
@@ -42,6 +62,11 @@ function App() {
     setViewPostDetail(true);
   };
 
+  const logOut = () => {
+    setCurrentUser("");
+    localStorage.clear();
+  };
+
   return (
     <>
       <header>
@@ -49,7 +74,7 @@ function App() {
         {currentUser ? (
           <nav>
             <div>{currentUser}</div>
-            <div>Logout</div>
+            <div onClick={logOut}>Logout</div>
           </nav>
         ) : (
           <nav>
@@ -59,8 +84,29 @@ function App() {
           </nav>
         )}
       </header>
-      {viewLogin && <LoginScreen />}
-      {viewSignup && <SignupScreen navToLogin={navToLogin} />}
+      {viewLogin && (
+        <LoginScreen
+          email={email}
+          password={password}
+          handleEmail={handleEmail}
+          handlePassword={handlePassword}
+          setCurrentUser={setCurrentUser}
+          navToPostList={navToPostList}
+        />
+      )}
+      {viewSignup && (
+        <SignupScreen
+          username={username}
+          email={email}
+          password={password}
+          confirmPassword={confirmPassword}
+          handleUsername={handleUsername}
+          handleEmail={handleEmail}
+          handlePassword={handlePassword}
+          handleConfirmPassword={handleConfirmPassword}
+          navToLogin={navToLogin}
+        />
+      )}
       {viewPostList && (
         <PostListScreen
           // currentPost={currentPost}
