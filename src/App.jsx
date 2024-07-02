@@ -114,7 +114,13 @@ function App() {
           navToPostDetail={navToPostDetail}
         />
       )}
-      {viewPostDetail && <PostDetailScreen currentPost={currentPost} />}
+      {viewPostDetail && (
+        <PostDetailScreen
+          currentPost={currentPost}
+          currentUser={currentUser}
+          navToPostDetail={navToPostDetail}
+        />
+      )}
     </>
   );
 }

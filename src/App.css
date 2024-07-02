@@ -95,3 +95,7 @@ header {
   display: flex;
   flex-direction: column;
 }
+
+.commentLI {
+  background-color: rgba(172, 255, 47, 0.49);
+}
