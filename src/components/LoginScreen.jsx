@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 function LoginScreen() {
+
+  // TODO - Add fetch for login
+
   return (
     <div className="screenLogin page">
         Log In

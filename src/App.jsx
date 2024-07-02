@@ -60,7 +60,7 @@ function App() {
         )}
       </header>
       {viewLogin && <LoginScreen />}
-      {viewSignup && <SignupScreen />}
+      {viewSignup && <SignupScreen navToLogin={navToLogin} />}
       {viewPostList && (
         <PostListScreen
           // currentPost={currentPost}

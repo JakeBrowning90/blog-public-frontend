@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { apiurl } from "../apiSource";
 
 function PostListScreen({ setCurrentPost, navToPostDetail }) {
   const [postList, setPostList] = useState([]);
@@ -12,7 +13,7 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
   };
 
   useEffect(() => {
-    fetch("https://jakebrowning-blog-api.fly.dev/posts", {
+    fetch(apiurl + "posts", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

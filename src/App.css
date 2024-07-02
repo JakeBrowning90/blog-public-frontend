@@ -90,3 +90,8 @@ header {
 .postPreview {
   background-color: rgba(116, 255, 106, 0.522);
 }
+
+.signupForm {
+  display: flex;
+  flex-direction: column;
+}

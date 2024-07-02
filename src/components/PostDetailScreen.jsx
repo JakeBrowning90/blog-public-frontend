@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { apiurl } from "../apiSource";
 
 function PostDetailScreen({ currentPost }) {
   const [commentsList, setCommentsList] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://jakebrowning-blog-api.fly.dev/posts/${currentPost.id}/comments`,
+      apiurl + `posts/${currentPost.id}/comments`,
       {
         mode: "cors",
         headers: {
