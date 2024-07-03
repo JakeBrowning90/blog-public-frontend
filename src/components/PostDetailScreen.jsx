@@ -35,6 +35,25 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
     }
   }
 
+  async function deleteComment(commentID) {
+    const response = await fetch(apiurl + "comments/" + commentID, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    const deleteResponse = await response.json();
+    if (deleteResponse.status == 403) {
+      console.log("Delete action forbidden");
+    } else {
+      setCommentsList(
+        commentsList.filter((comment) => comment._id !== commentID)
+      );
+    }
+  }
+
   useEffect(() => {
     fetch(apiurl + `posts/${currentPost.id}/comments`, {
       mode: "cors",
@@ -92,8 +111,10 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
               <p>{comment.user.username}</p>
               <p>{new Date(comment.timestamp).toUTCString()}</p>
               <p>{comment.body}</p>
-              {localStorage.getItem("id") == comment.user.id && (
-                <button>Delete</button>
+              {currentUser && localStorage.getItem("id") == comment.user.id && (
+                <button onClick={() => deleteComment(comment._id)}>
+                  Delete
+                </button>
               )}
             </li>
           );
