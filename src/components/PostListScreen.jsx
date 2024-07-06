@@ -35,7 +35,6 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
 
   return (
     <div className="screenPostList page">
-      Post List
       {postList.length == 0 ? (
         <p>There are no published posts.</p>
       ) : (

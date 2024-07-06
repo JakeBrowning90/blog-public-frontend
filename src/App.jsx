@@ -70,17 +70,25 @@ function App() {
   return (
     <>
       <header>
-        <div onClick={navToPostList}>Home</div>
+        <div className="navWord" onClick={navToPostList}>
+          Home
+        </div>
         {currentUser ? (
           <nav>
             <div>{currentUser}</div>
-            <div onClick={logOut}>Logout</div>
+            <div className="navWord" onClick={logOut}>
+              Logout
+            </div>
           </nav>
         ) : (
           <nav>
             <div>Visitor</div>
-            <div onClick={navToLogin}>Log in</div>
-            <div onClick={navToSignup}>Sign up</div>
+            <div className="navWord" onClick={navToLogin}>
+              Log in
+            </div>
+            <div className="navWord" onClick={navToSignup}>
+              Sign up
+            </div>
           </nav>
         )}
       </header>
@@ -121,6 +129,12 @@ function App() {
           navToPostDetail={navToPostDetail}
         />
       )}
+      <footer>
+        <p>App by Jake Browning, 2024.</p>
+        <a className="navWord" href="http://jake-browning.com/" target="_blank">
+          Portfolio
+        </a>
+      </footer>
     </>
   );
 }
