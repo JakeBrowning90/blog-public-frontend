@@ -49,7 +49,7 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
                 <h2>{post.title} </h2>
 
                 <h3>{post.subtitle}</h3>
-                <p>By {post.user.full_name}</p>
+                <p>By {post.user.username}</p>
                 <p>
                   Originally written: {new Date(post.createdAt).toUTCString()}
                 </p>
