@@ -48,8 +48,13 @@
 }
 
 /* My styles */
-a, .navWord {
- text-decoration: underline;
+a,
+.navWord {
+  text-decoration: underline;
+}
+
+.bodyLink {
+  color: black;
 }
 
 button {
