@@ -50,10 +50,8 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
 
                 <h3>{post.subtitle}</h3>
                 <p>By {post.user.username}</p>
-                <p>
-                  Originally written: {new Date(post.createdAt).toUTCString()}
-                </p>
-                <p>Last updated: {new Date(post.updatedAt).toUTCString()}</p>
+                <p>First posted: {new Date(post.createdAt).toUTCString()}</p>
+                <p>Last update: {new Date(post.updatedAt).toUTCString()}</p>
               </li>
             );
           })}
