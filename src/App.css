@@ -151,3 +151,7 @@ label {
   display: flex;
   flex-direction: column;
 }
+
+.textbody {
+  text-align: left;
+}

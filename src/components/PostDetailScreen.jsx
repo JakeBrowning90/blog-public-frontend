@@ -79,11 +79,9 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
         <h2>{currentPost.title} </h2>
         <h3>{currentPost.subtitle}</h3>
         <p>By {currentPost.user.username}</p>
-        <p>
-          First posted: {new Date(currentPost.createdAt).toUTCString()}
-        </p>
+        <p>First posted: {new Date(currentPost.createdAt).toUTCString()}</p>
         <p>Last update: {new Date(currentPost.updatedAt).toUTCString()}</p>
-        <div dangerouslySetInnerHTML={markup} />
+        <div className="textbody" dangerouslySetInnerHTML={markup} />
       </div>
       <p>Discussion:</p>
 
@@ -115,7 +113,7 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
             <li key={comment._id} className="commentLI">
               <p>{comment.user.username}</p>
               <p>{new Date(comment.timestamp).toUTCString()}</p>
-              <p>{comment.body}</p>
+              <p className="textbody">{comment.body}</p>
               {currentUser && localStorage.getItem("id") == comment.user.id && (
                 <button onClick={() => deleteComment(comment._id)}>
                   Delete
